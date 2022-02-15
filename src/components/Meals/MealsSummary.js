@@ -5,7 +5,7 @@ const MealsSummary = () => {
 
   return (
    <section className={classes.summary}>
-     <h2>Moodern Fare delivered to you</h2>
+     <h2>Modern Fare delivered to you</h2>
      <p>
        Choose your favorite meal from our broad selection of complete meals. 
        Enjoy for lunch or dinner delivered to your door.
