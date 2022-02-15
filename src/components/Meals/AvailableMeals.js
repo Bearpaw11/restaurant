@@ -38,8 +38,8 @@ import MealItem from "./MealItem/MealItem"
         description={meal.description} 
         price={meal.price}
       />
-    ));
-
+      ));
+      
 
   return (
     <section className={classes.meals}>
