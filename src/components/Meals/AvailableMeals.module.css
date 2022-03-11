@@ -13,6 +13,13 @@
   color: black;;
 }
 
+
+.MealsError {
+  padding-top: 60px;
+  text-align: center;
+  color: red;;
+}
+
 .meals ul {
   list-style: none;
   margin: 0;

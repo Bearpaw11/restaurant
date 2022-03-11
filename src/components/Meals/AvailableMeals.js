@@ -3,39 +3,57 @@ import classes from "./AvailableMeals.module.css";
 import Card from "../UI/Card";
 import MealItem from "./MealItem/MealItem";
 
-
-
 const AvailablelMeals = () => {
-  const [meals, setMeals] = useState([])
-  const [isLoading, setIsloading] = useState(true)
+  const [meals, setMeals] = useState([]);
+  const [isLoading, setIsloading] = useState(true);
+  const [error, setError] = useState();
+
   useEffect(() => {
     const fetchMeals = async () => {
-      const response = await fetch("https://meals-b48a5-default-rtdb.firebaseio.com/meals.json")
+      const response = await fetch(
+        "https://meals-b48a5-default-rtdb.firebaseio.com/meals.json"
+      );
+
+      if (!response.ok) {
+        throw new Error("Something went wrong");
+      }
+
       const responseData = await response.json();
       const loadedMeals = [];
 
-        for (const key in responseData) {
-          loadedMeals.push({
-            id: key,
-            name: responseData[key].name,
-            description: responseData[key].description,
-            price: responseData[key].price
-          })
-
-        }
-        setMeals(loadedMeals)
-        setIsloading(false)
+      for (const key in responseData) {
+        loadedMeals.push({
+          id: key,
+          name: responseData[key].name,
+          description: responseData[key].description,
+          price: responseData[key].price,
+        });
+      }
+      setMeals(loadedMeals);
+      setIsloading(false);
     };
-    fetchMeals();
+
+    fetchMeals().catch((error) => {
+      setIsloading(false);
+      setError(error.message);
+    });
   }, []);
 
-if (isLoading) {
-  return (
-    <section className={classes.MealsLoading} >
-      <p>loading....</p>
-    </section>
-  )
-}
+  if (isLoading) {
+    return (
+      <section className={classes.MealsLoading}>
+        <p>loading....</p>
+      </section>
+    );
+  }
+
+  if (error) {
+    return (
+      <section className={classes.MealsError}>
+        <p>{error}</p>
+      </section>
+    );
+  }
 
   const mealsList = meals.map((meal) => (
     <MealItem
@@ -48,7 +66,6 @@ if (isLoading) {
   ));
 
   return (
-  
     <section className={classes.meals}>
       <Card>
         <ul>{mealsList}</ul>
