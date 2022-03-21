@@ -89,7 +89,7 @@ const orderIsBeingSubmitted = <p>Order is being sent...</p>
 const orderHasBeenSubmitted = 
 <React.Fragment>
   <div className={classes.actions}>
-  <p className={classes.success}>Success, Order has beed placed.</p>
+  <p>Success, Order has beed placed.</p>
       <button className={classes.button} onClick={props.onClose}>
         Close
       </button>
