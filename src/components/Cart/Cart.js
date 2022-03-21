@@ -38,6 +38,7 @@ const Cart = (props) => {
     });
     setIsSubmitting(false);
     setDidSubmit(true);
+    cartCtx.clearCart();
   };
 
   const cartItems = (
@@ -88,8 +89,8 @@ const orderIsBeingSubmitted = <p>Order is being sent...</p>
 
 const orderHasBeenSubmitted = 
 <React.Fragment>
+  <p className={classes.success}>Success, Order has beed placed.</p>
   <div className={classes.actions}>
-  <p>Success, Order has beed placed.</p>
       <button className={classes.button} onClick={props.onClose}>
         Close
       </button>
