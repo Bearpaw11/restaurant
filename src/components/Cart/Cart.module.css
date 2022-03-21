@@ -19,6 +19,14 @@
   text-align: right;
 }
 
+.success {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
 .actions button {
   font: inherit;
   cursor: pointer;
@@ -27,8 +35,7 @@
   padding: 0.5rem 2rem;
   border-radius: 25px;
   margin-left: 1rem;
-  margin-bottom: 2rem;
-
+ 
 }
 
 .actions button:hover,
